@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Beamo.ViewModels"
+             xmlns:models="clr-namespace:Beamo.Models"
+             x:Class="Beamo.Views.Contacts.ContactsView"
+             x:DataType="vm:ContactsViewModel"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="0"
+                   Text="{Binding SearchText}"
+                   Placeholder="Search contacts..."
+                   Margin="12,8" />
+
+        <!-- Empty State -->
+        <VerticalStackLayout Grid.Row="1"
+                             IsVisible="{Binding IsEmpty}"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="12">
+            <Label Text="📭" FontSize="48" HorizontalOptions="Center" />
+            <Label Text="No contacts yet"
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <!-- Contacts List -->
+        <RefreshView Grid.Row="1"
+                     Command="{Binding LoadCommand}"
+                     IsRefreshing="{Binding IsBusy}"
+                     IsVisible="{Binding IsEmpty, Converter={StaticResource InvertedBoolConverter}}">
+            <CollectionView ItemsSource="{Binding Contacts}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Contact">
+                        <SwipeView>
+
+                            <!-- Swipe: Delete -->
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Red"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ContactsViewModel}}, Path=DeleteContactCommand}"
+                                               CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <!-- Swipe: Favorite -->
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="⭐"
+                                               BackgroundColor="Gold"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ContactsViewModel}}, Path=ToggleFavoriteCommand}"
+                                               CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+
+                            <!-- Contact Row -->
+                            <Border Margin="12,4"
+                                    Padding="14"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+                                <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
+
+                                    <!-- Avatar -->
+                                    <Border Grid.Column="0"
+                                            BackgroundColor="#6C63FF"
+                                            StrokeShape="RoundRectangle 24"
+                                            WidthRequest="48"
+                                            HeightRequest="48">
+                                        <Label Text="{Binding FullName[0]}"
+                                               TextColor="White"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                    </Border>
+
+                                    <!-- Name + Email -->
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         VerticalOptions="Center"
+                                                         Spacing="2">
+                                        <Label Text="{Binding FullName}"
+                                               FontSize="15"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Email}"
+                                               FontSize="13"
+                                               TextColor="Gray" />
+                                        <Label Text="{Binding Company}"
+                                               FontSize="12"
+                                               TextColor="Gray"
+                                               IsVisible="{Binding Company, Converter={StaticResource IsNotNullConverter}}" />
+                                    </VerticalStackLayout>
+
+                                    <!-- Favorite Star -->
+                                    <Label Grid.Column="2"
+                                           Text="⭐"
+                                           FontSize="18"
+                                           VerticalOptions="Center"
+                                           IsVisible="{Binding IsFavorite}" />
+
+                                </Grid>
+                            </Border>
+
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>

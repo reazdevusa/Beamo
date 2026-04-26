@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:home="clr-namespace:Beamo.Views.Home"
+       xmlns:contacts="clr-namespace:Beamo.Views.Contacts"
+       xmlns:profile="clr-namespace:Beamo.Views.Profile"
+       xmlns:referrals="clr-namespace:Beamo.Views.Referrals"
+       xmlns:notifications="clr-namespace:Beamo.Views.Notifications"
+       x:Class="Beamo.AppShell"
+       Shell.TabBarBackgroundColor="{AppThemeBinding Light=White, Dark=#121212}"
+       Shell.TabBarForegroundColor="#6C63FF"
+       Shell.TabBarTitleColor="#6C63FF"
+       Shell.TabBarUnselectedColor="Gray">
+
+    <TabBar>
+
+        <ShellContent Title="Home"
+                      Icon="home.png"
+                      ContentTemplate="{DataTemplate home:HomeView}"
+                      Route="HomeView" />
+
+        <ShellContent Title="Contacts"
+                      Icon="contacts.png"
+                      ContentTemplate="{DataTemplate contacts:ContactsView}"
+                      Route="ContactsView" />
+
+        <ShellContent Title="Profile"
+                      Icon="profile.png"
+                      ContentTemplate="{DataTemplate profile:ProfileView}"
+                      Route="ProfileView" />
+
+        <ShellContent Title="Referrals"
+                      Icon="referrals.png"
+                      ContentTemplate="{DataTemplate referrals:ReferralsView}"
+                      Route="ReferralsView" />
+
+        <ShellContent Title="Notifications"
+                      Icon="notifications.png"
+                      ContentTemplate="{DataTemplate notifications:NotificationsView}"
+                      Route="NotificationsView" />
+
+    </TabBar>
+
+</Shell>

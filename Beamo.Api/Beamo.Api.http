@@ -1,0 +1,6 @@
+@Beamo.Api_HostAddress = http://localhost:5252
+
+GET {{Beamo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

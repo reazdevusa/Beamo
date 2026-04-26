@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Beamo.ViewModels"
+             x:Class="Beamo.Views.Profile.ProfileView"
+             x:DataType="vm:ProfileViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit"
+                     Command="{Binding ToggleEditCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <!-- Avatar -->
+            <Border BackgroundColor="#6C63FF"
+                    StrokeShape="RoundRectangle 50"
+                    WidthRequest="90"
+                    HeightRequest="90"
+                    HorizontalOptions="Center">
+                <Label Text="👤"
+                       FontSize="40"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Border>
+
+            <!-- Full Name -->
+            <Label Text="Full Name" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding FullName}"
+                   Placeholder="Your full name"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Email -->
+            <Label Text="Email" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding Email}"
+                   Placeholder="your@email.com"
+                   Keyboard="Email"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Phone -->
+            <Label Text="Phone" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding Phone}"
+                   Placeholder="+1 234 567 8900"
+                   Keyboard="Telephone"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Company -->
+            <Label Text="Company" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding Company}"
+                   Placeholder="Company name"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Job Title -->
+            <Label Text="Job Title" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding JobTitle}"
+                   Placeholder="Your role"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Website -->
+            <Label Text="Website" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding Website}"
+                   Placeholder="https://yourwebsite.com"
+                   Keyboard="Url"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- LinkedIn -->
+            <Label Text="LinkedIn" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding LinkedIn}"
+                   Placeholder="https://linkedin.com/in/yourname"
+                   Keyboard="Url"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Twitter -->
+            <Label Text="Twitter / X" FontSize="12" TextColor="Gray" />
+            <Entry Text="{Binding Twitter}"
+                   Placeholder="@yourhandle"
+                   IsEnabled="{Binding IsEditing}" />
+
+            <!-- Bio -->
+            <Label Text="Bio" FontSize="12" TextColor="Gray" />
+            <Editor Text="{Binding Bio}"
+                    Placeholder="Tell people about yourself..."
+                    HeightRequest="100"
+                    IsEnabled="{Binding IsEditing}" />
+
+            <!-- Save / Cancel Buttons -->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  IsVisible="{Binding IsEditing}"
+                  Margin="0,10,0,0">
+                <Button Grid.Column="0"
+                        Text="Cancel"
+                        Command="{Binding CancelEditCommand}"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        CornerRadius="12" />
+                <Button Grid.Column="1"
+                        Text="Save Profile"
+                        Command="{Binding SaveCommand}"
+                        BackgroundColor="#6C63FF"
+                        TextColor="White"
+                        CornerRadius="12" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

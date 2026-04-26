@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Beamo.Api/Beamo.Api.csproj" />
+  <Project Path="Beamo.Core/Beamo.Core.csproj" />
+  <Project Path="Beamo/Beamo.csproj" />
+</Solution>

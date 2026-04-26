@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Beamo.ViewModels"
+             xmlns:models="clr-namespace:Beamo.Models"
+             x:Class="Beamo.Views.Referrals.ReferralsView"
+             x:DataType="vm:ReferralsViewModel"
+             Title="{Binding Title}">
+
+    <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsBusy}">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="16">
+
+                <!-- Earnings Card -->
+                <Border BackgroundColor="{AppThemeBinding Light=#6C63FF, Dark=#4A42CC}"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Total Earnings"
+                               TextColor="White"
+                               FontSize="14"
+                               Opacity="0.8" />
+                        <Label Text="{Binding TotalEarnings, StringFormat='${0:F2}'}"
+                               TextColor="White"
+                               FontSize="36"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding AvailableBalance, StringFormat='Available: ${0:F2}'}"
+                               TextColor="White"
+                               FontSize="13"
+                               Opacity="0.85" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Referral Code Card -->
+                <Border StrokeShape="RoundRectangle 16"
+                        Padding="16"
+                        BackgroundColor="{AppThemeBinding Light=#F5F5FF, Dark=#1E1E2E}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Your Referral Code"
+                               FontSize="13"
+                               TextColor="Gray" />
+                        <Label Text="{Binding ReferralCode}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <Button Grid.Column="0"
+                                    Text="📋 Copy"
+                                    Command="{Binding CopyReferralCodeCommand}"
+                                    BackgroundColor="#6C63FF"
+                                    TextColor="White"
+                                    CornerRadius="10" />
+                            <Button Grid.Column="1"
+                                    Text="🔗 Share"
+                                    Command="{Binding ShareReferralCodeCommand}"
+                                    BackgroundColor="#4CAF50"
+                                    TextColor="White"
+                                    CornerRadius="10" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Referrals List -->
+                <Label Text="My Referrals"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       Margin="0,8,0,0" />
+
+                <!-- Empty State -->
+                <VerticalStackLayout IsVisible="{Binding IsEmpty}"
+                                     HorizontalOptions="Center"
+                                     Spacing="8"
+                                     Margin="0,20">
+                    <Label Text="🤝" FontSize="48" HorizontalOptions="Center" />
+                    <Label Text="No referrals yet. Share your code!"
+                           FontSize="14"
+                           TextColor="Gray"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Referral Items -->
+                <CollectionView ItemsSource="{Binding Referrals}"
+                                IsVisible="{Binding IsEmpty, Converter={StaticResource InvertedBoolConverter}}"
+                                HeightRequest="300">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Referral">
+                            <Border Margin="0,4"
+                                    Padding="14"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                        <Label Text="{Binding ReferredUserId}"
+                                               FontSize="14"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Status}"
+                                               FontSize="12"
+                                               TextColor="Gray" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Level, StringFormat='Level {0}'}"
+                                           FontSize="12"
+                                           TextColor="#6C63FF"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Recent Earnings -->
+                <Label Text="Recent Earnings"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       Margin="0,8,0,0" />
+
+                <CollectionView ItemsSource="{Binding Earnings}"
+                                HeightRequest="250">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ReferralEarning">
+                            <Border Margin="0,4"
+                                    Padding="14"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                        <Label Text="{Binding Type}"
+                                               FontSize="14"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Status}"
+                                               FontSize="12"
+                                               TextColor="Gray" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Amount, StringFormat='${0:F2}'}"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#4CAF50"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>

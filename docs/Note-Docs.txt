@@ -1,0 +1,217 @@
+Which one is better between the below two?
+
+
+
+PocketBaseFree forever✅ Zero✅ You own it fully✅ YesBest for Beamo — full control
+
+
+
+Self-host SupabaseServer cost only✅ You control it✅ Fully yours✅ YesAdvanced developers
+
+
+
+I want to host this on MCPize. How will I pay my subscribers through their too many different accounts in around 200 countries around the world?
+
+Will I have to Tell Stripe: “Pay this user $X” manually every month?
+
+MCP Server (FastAPI/Node.js) - Why not DotNet?
+
+Stripe + Stripe Connect - Will it cover any bank or financial system so that incoming money to my account does not get impeded?
+
+
+
+Share via BLE, NFC, QR - User should be able to share it on their social media like: Facebook, YouTube, TikTok, LinkedIn, Instagram and all others, right?
+
+If Beamo uses OpenAI or ClaudeAi or any paid service - can I see any free alternative like Gemini Flash or anything like that?
+
+
+Free user earns $27/month - If I want to pay, how will I pay? How much will it cost from me? Or the cost will be deducted from this small amount of money?
+
+Is the referral system legally ok? Is there any restriction on it? I live in New York, USA.
+
+
+Please, ensure that for any feature's incompletenes there should be NO crash, server error, show stopper or anything else like this. The flow of application must go on! So, implement proper check, security and everything at every point over the entire application.
+
+
+
+
+Please:
+
+→ Generate the full UI/UX flow
+→ Create the viral onboarding script
+→ Write the App Store description
+→ Design the referral pyramid graphics
+→ Produce the marketing launch plan
+
+→ Rewrite your PRD to use PocketBase instead of Supabase
+→ Design the PocketBase schema
+→ Write the sync logic
+→ Write the real-time subscription logic
+→ Write the migration plan from Supabase to PocketBase
+→ Architect the entire backend for you
+
+→ Build a 12-month revenue roadmap
+→ Create a viral launch plan
+→ Design the referral growth funnel
+→ Model user acquisition cost vs revenue
+→ Build a financial projection spreadsheet
+
+→ Write your Referral Terms & Conditions
+→ Write your Legal Compliance Statement
+→ Write your Payout Policy
+→ Write your Stripe Connect payout flow
+→ Write your IRS tax compliance rules for users
+
+→ Your Referral Payout Architecture
+→ Your Stripe Connect Flow Diagram
+→ Your Legal Terms for Referral Program
+→ Your Earnings Dashboard UI
+→ Your Global Payout Policy
+
+→ Your full .NET MCP Server architecture
+→ Your folder structure
+→ Your OpenAPI generator setup
+→ Your MCP tool endpoints
+→ Your ASP.NET Web API template
+→ Your CI/CD pipeline for MCPize
+
+- 🟩 Option A — Claude / OpenAI (Paid) : Use for: Pro users, Team users, High-value AI features
+
+- 🟦 Option B — Gemini Flash (Free / Very Cheap) : Use for: Free users, Light AI tasks, Bio generation, Suggestions
+
+- 🟨 Option C — Local / Open-Source Models (Free Forever) : Implement later.
+
+- Go for 🟥 Option D — Hybrid Model (Best Strategy for Beamo) : Free Users → Gemini Flash or Local Llama, Pro Users → Claude or OpenAI
+	-> I think, the app may let the users know about this feature so that they become aware of their worse quality contents or something like that.
+
+
+→ Add “Social Media Sharing” to your PRD
+→ Design the “Share Card” UI
+→ Build the hybrid AI architecture
+→ Recommend exact models for each tier
+→ Estimate your AI cost per user
+
+→ The final unified PRD using PocketBase
+→ The PocketBase schema
+→ The sync logic
+→ The real-time subscription logic
+→ The MCP server architecture
+→ The failure-proofing rules
+→ The viral growth loops
+→ The AI hybrid model strateg
+
+→ Create your final brand identity
+→ Design your logo direction
+→ Create your brand story
+→ Write your App Store description
+→ Generate your tagline variations
+→ Produce your brand voice guidelines
+
+
+================================================================
+
+→ The complete unified PRD
+→ The PocketBase schema
+→ The MCP server architecture
+→ The failure-proofing rules
+→ The viral growth loops
+→ The AI hybrid model strategy
+
+
+
+- Add another feature please:
+This product (Beamo) should work as a platform through which other platforms will be going viral. For this I want to charge those platform a significant amount from where users will get referral in the same way.
+
+
+=============================================================================================
+
+
+🎉 End of Part 12
+We now have all 12 parts of the PRD.
+
+If you want, I can now:
+
+✔ Combine all 12 parts into a single master PRD
+✔ Generate a PDF-ready version
+✔ Create a founder summary
+✔ Create a developer summary
+✔ Create a partner pitch deck
+✔ Create a roadmap for development
+✔ Create a timeline for launch
+Just tell me what you want next.
+
+=======================================================================================================
+
+✔ Combine all 13 parts into one master PRD
+✔ Generate a PDF-ready version
+✔ Create a founder summary
+✔ Create a developer summary
+✔ Create a partner pitch deck
+✔ Create a roadmap & timeline
+✔ Create a roadmap for development
+✔ Create a timeline for launch
+✔ Create a funding pitch version
+
+=====================================================================================================
+
+You asked for:
+
+✔ Combine all 13 parts into one master PRD
+✔ Generate a PDF-ready version
+✔ Create a founder summary
+✔ Create a developer summary
+✔ Create a partner pitch deck
+✔ Create a roadmap & timeline
+✔ Create a roadmap for development
+✔ Create a timeline for launch
+✔ Create a funding pitch version
+
+=========================================================================================================
+
+The recommended solution layout inside Visual Studio
+
+The best way to organize MAUI + Next.js + MCP Server
+
+The best Git branching strategy
+
+The best deployment strategy
+=========================================================================================================
+
+=========================================================================================================
+✔ The exact Visual Studio 2026 solution layout
+✔ The recommended Git branching strategy
+✔ The recommended CI/CD pipeline
+✔ The recommended environment variable structure
+✔ The recommended deployment architecture
+=========================================================================================================
+
+=========================================================================================================
+✔ A full architecture diagram
+✔ A sequence diagram for sync
+✔ A failure-isolation diagram
+✔ A scaling plan for each component
+✔ A future microservices migration plan (if you ever need it)
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+=========================================================================================================
+
+
+BEAMO - PRD v3.0 - 4

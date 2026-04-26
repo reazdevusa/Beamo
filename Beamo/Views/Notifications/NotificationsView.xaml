@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Beamo.ViewModels"
+             xmlns:models="clr-namespace:Beamo.Models"
+             x:Class="Beamo.Views.Notifications.NotificationsView"
+             x:DataType="vm:NotificationsViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Mark All Read"
+                     Command="{Binding MarkAllReadCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Unread Badge Summary -->
+        <Border Grid.Row="0"
+                IsVisible="{Binding IsEmpty, Converter={StaticResource InvertedBoolConverter}}"
+                BackgroundColor="{AppThemeBinding Light=#EEF2FF, Dark=#1E1E2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="14,10"
+                Margin="12,8">
+            <Label Text="{Binding UnreadCount, StringFormat='{0} unread notification(s)'}"
+                   FontSize="13"
+                   TextColor="#6C63FF"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Border>
+
+        <!-- Empty State -->
+        <VerticalStackLayout Grid.Row="1"
+                             IsVisible="{Binding IsEmpty}"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="12">
+            <Label Text="🔔" FontSize="48" HorizontalOptions="Center" />
+            <Label Text="You're all caught up!"
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <!-- Notifications List -->
+        <RefreshView Grid.Row="1"
+                     Command="{Binding LoadCommand}"
+                     IsRefreshing="{Binding IsBusy}"
+                     IsVisible="{Binding IsEmpty, Converter={StaticResource InvertedBoolConverter}}">
+            <CollectionView ItemsSource="{Binding Notifications}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Notification">
+                        <Border Margin="12,4"
+                                Padding="14"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NotificationsViewModel}}, Path=MarkReadCommand}"
+                                    CommandParameter="{Binding}" />
+                            </Border.GestureRecognizers>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+
+                                <!-- Type Icon -->
+                                <Border Grid.Column="0"
+                                        BackgroundColor="{AppThemeBinding Light=#EEF2FF, Dark=#2A2A3E}"
+                                        StrokeShape="RoundRectangle 22"
+                                        WidthRequest="44"
+                                        HeightRequest="44">
+                                    <Label Text="🔔"
+                                           FontSize="20"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Border>
+
+                                <!-- Title + Message -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="3">
+                                    <Label Text="{Binding Title}"
+                                           FontSize="14"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Message}"
+                                           FontSize="13"
+                                           TextColor="Gray"
+                                           MaxLines="2"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0:MMM dd, yyyy}'}"
+                                           FontSize="11"
+                                           TextColor="Gray" />
+                                </VerticalStackLayout>
+
+                                <!-- Unread Dot -->
+                                <Ellipse Grid.Column="2"
+                                         Fill="#6C63FF"
+                                         WidthRequest="10"
+                                         HeightRequest="10"
+                                         VerticalOptions="Center"
+                                         IsVisible="{Binding IsRead, Converter={StaticResource InvertedBoolConverter}}" />
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>
