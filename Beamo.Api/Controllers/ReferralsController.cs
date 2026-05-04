@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Beamo.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("beamo/v1/[controller]")]
 [Produces("application/json")]
 public class ReferralsController(IDatabaseService db) : ControllerBase
 {

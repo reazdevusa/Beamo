@@ -20,7 +20,12 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title       = "Beamo API",
         Version     = "v1",
-        Description = "Backend API for the Beamo networking app — contacts, exchanges, referrals & notifications."
+        Description = "Backend API for the Beamo networking app — contacts, exchanges, referrals & notifications.",
+        Contact = new OpenApiContact
+        {
+            Name = "Reaz Ahmed",
+            Url  = new Uri("https://reazlab.com")
+        }
     });
 });
 
