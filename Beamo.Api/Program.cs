@@ -38,6 +38,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+//Optional:
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // ─── Middleware ───────────────────────────────────────────
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -51,9 +55,5 @@ app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
-//Optional:
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 app.Run();
