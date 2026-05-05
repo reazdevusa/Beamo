@@ -29,15 +29,13 @@ jobs:
         run: dotnet build Beamo.Api/Beamo.Api.csproj --configuration Release --no-restore
 
       - name: Publish API
-        run: dotnet publish ./Beamo.Api/Beamo.Api.csproj -c Release -o ${{ github.workspace }}/published
-
+        run: dotnet publish Beamo.Api/Beamo.Api.csproj -c Release -o ./published
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: beamo-api
-          path: ${{ github.workspace }}/published
-
+          path: ./published
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: beamo-api
-          path: ./publish
+          path: ./published
 
       - name: Deploy to Azure Web App (Linux)
         uses: azure/webapps-deploy@v2
@@ -56,5 +54,4 @@ jobs:
           app-name: 'reazlab-api'
           slot-name: 'production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: ${{ github.workspace }}/published
-
+          package: ./published
