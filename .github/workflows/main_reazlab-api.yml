@@ -29,7 +29,8 @@ jobs:
         run: dotnet build Beamo.Api/Beamo.Api.csproj --configuration Release --no-restore
 
       - name: Publish API
-        run: dotnet publish Beamo.Api/Beamo.Api.csproj -c Release -o ./published
+        run: dotnet publish Beamo.Api/Beamo.Api.csproj -c Release -r linux-x64 --self-contained false -o ./published
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
